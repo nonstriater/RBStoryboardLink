@@ -71,6 +71,12 @@
     return self;
 }
 
+- (void)dealloc{
+    if ([self.scene respondsToSelector:@selector(removeFromParentViewController)]) {
+        [self.scene removeFromParentViewController];
+    }
+}
+
 - (void)loadDefaults
 {
     _needsTopLayoutGuide = YES;
