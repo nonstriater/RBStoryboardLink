@@ -301,7 +301,7 @@
 }
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation {
-    if ([self.scene respondsToSelector:[anInvocation selector]])
+    if ([anInvocation selector]!=NSSelectorFromString(@"dealloc") && [self.scene respondsToSelector:[anInvocation selector]])
         [anInvocation invokeWithTarget:self.scene];
     else
         [super forwardInvocation:anInvocation];
