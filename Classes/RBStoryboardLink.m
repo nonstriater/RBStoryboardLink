@@ -286,25 +286,25 @@
 }
 
 
-#pragma mark - Message forwarding
+// #pragma mark - Message forwarding
 
-// The following methods are important to get unwind segues to work properly.
+// // The following methods are important to get unwind segues to work properly.
 
-- (BOOL)canPerformUnwindSegueAction:(SEL)action fromViewController:(UIViewController *)fromViewController withSender:(id)sender {
-    return [self.scene canPerformUnwindSegueAction:action fromViewController:fromViewController withSender:sender];
-}
+// - (BOOL)canPerformUnwindSegueAction:(SEL)action fromViewController:(UIViewController *)fromViewController withSender:(id)sender {
+//     return [self.scene canPerformUnwindSegueAction:action fromViewController:fromViewController withSender:sender];
+// }
 
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
-    return ([super methodSignatureForSelector:aSelector]
-            ?:
-            [self.scene methodSignatureForSelector:aSelector]);
-}
+// - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+//     return ([super methodSignatureForSelector:aSelector]
+//             ?:
+//             [self.scene methodSignatureForSelector:aSelector]);
+// }
 
-- (void)forwardInvocation:(NSInvocation *)anInvocation {
-    if ([anInvocation selector]!=NSSelectorFromString(@"dealloc") && [self.scene respondsToSelector:[anInvocation selector]])
-        [anInvocation invokeWithTarget:self.scene];
-    else
-        [super forwardInvocation:anInvocation];
-}
+// - (void)forwardInvocation:(NSInvocation *)anInvocation {
+//     if ([anInvocation selector]!=NSSelectorFromString(@"dealloc") && [self.scene respondsToSelector:[anInvocation selector]])
+//         [anInvocation invokeWithTarget:self.scene];
+//     else
+//         [super forwardInvocation:anInvocation];
+// }
 
 @end
